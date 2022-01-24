@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
@@ -7,11 +7,25 @@ import NumList from './src/numlist';
 class App extends Component {
   state = {
     appName: 'Example App',
-    random: [36, 999],
+    random: [],
   };
 
   onAddRandomNum = () => {
-    alert('Add random number!');
+    const randomNum = Math.floor(Math.random() * 100) + 1;
+    this.setState(prevState => {
+      return {
+        random: [...prevState.random, randomNum],
+      };
+    });
+  };
+
+  onNumDelete = position => {
+    const newArray = this.state.random.filter((num, index) => {
+      return position != index;
+    });
+    this.setState({
+      random: newArray,
+    });
   };
 
   render() {
@@ -19,9 +33,12 @@ class App extends Component {
       <View style={styles.mainView}>
         <Header name={this.state.appName}></Header>
         <Text style={styles.mainText}>Hello, World!</Text>
+
         <Generator add={this.onAddRandomNum} />
 
-        <NumList num={this.state.random} />
+        <ScrollView style={{width: '100%'}} bounces={true}>
+          <NumList num={this.state.random} delete={this.onNumDelete} />
+        </ScrollView>
       </View>
     );
   }
