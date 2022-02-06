@@ -6,12 +6,15 @@ import {
   ScrollView,
   Button,
   TextInput,
+  Image,
 } from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
 import Input from './src/input';
 import Picker from './src/picker';
+import Steak from './assets/images/steak.jpg';
+import Modal from './src/modal';
 
 class App extends Component {
   // state = {
@@ -60,6 +63,14 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
+        {/* <Image
+          style={styles.image}
+          source={{url: 'https://picsum.photos/id/237/200/300'}}
+          resizeMode="contain"
+          onLoadEnd={() => alert('Image Loaded')}
+        /> */}
+        <Modal />
+
         {/* <Header name={this.state.appName}></Header>
         <Text style={styles.mainText}>Hello, World!</Text>
 
@@ -71,7 +82,7 @@ class App extends Component {
         
         <Input />
         */}
-        <Picker />
+        {/* <Picker /> */}
         {/* <TextInput
           style={styles.input}
           value={this.state.myTextInput}
@@ -129,6 +140,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10,
+  },
+  image: {
+    width: '100%',
+    height: 700,
   },
 });
 
