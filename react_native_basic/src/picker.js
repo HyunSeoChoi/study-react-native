@@ -3,16 +3,28 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-community/picker';
 
 class PickerComponent extends Component {
+  state = {
+    country: 'korea',
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        {/* <Picker style={{height: 50, width: 250}}></Picker> */}
+        <Picker
+          style={{height: 50, width: 250}}
+          selectedValue={this.state.country}
+          onValueChange={(val, idx) => {
+            this.setState({country: val});
+          }}>
+          <Picker.Item label="Korea" value="korea" />
+          <Picker.Item label="Canada" value="canada" />
+        </Picker>
       </View>
     );
   }
 }
 
-const styles = styleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
