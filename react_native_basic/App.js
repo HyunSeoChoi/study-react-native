@@ -1,111 +1,132 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
-import type {Node} from 'react';
+import React, {Component} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Button,
+  TextInput,
 } from 'react-native';
+import Header from './src/header';
+import Generator from './src/generator';
+import NumList from './src/numlist';
+import Input from './src/input';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+class App extends Component {
+  // state = {
+  //   appName: 'Example App',
+  //   random: [],
+  // };
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+  // onAddRandomNum = () => {
+  //   const randomNum = Math.floor(Math.random() * 100) + 1;
+  //   this.setState(prevState => {
+  //     return {
+  //       random: [...prevState.random, randomNum],
+  //     };
+  //   });
+  // };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  // onNumDelete = position => {
+  //   const newArray = this.state.random.filter((num, index) => {
+  //     return position != index;
+  //   });
+  //   this.setState({
+  //     random: newArray,
+  //   });
+  // };
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  state = {
+    myTextInput: '',
+    alphabet: ['a', 'b', 'c', 'd'],
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+  onChangeInput = event => {
+    this.setState({
+      myTextInput: event,
+    });
+  };
+
+  onAddTextInput = () => {
+    this.setState(prevState => {
+      return {
+        myTextInput: '',
+        alphabet: [...prevState.alphabet, prevState.myTextInput],
+      };
+    });
+  };
+
+  render() {
+    return (
+      <View style={styles.mainView}>
+        {/* <Header name={this.state.appName}></Header>
+        <Text style={styles.mainText}>Hello, World!</Text>
+
+        <Generator add={this.onAddRandomNum} />
+
+        <ScrollView style={{width: '100%'}} bounces={true}>
+          <NumList num={this.state.random} delete={this.onNumDelete} />
+        </ScrollView> 
+        
+        <Input />
+        */}
+        <TextInput
+          style={styles.input}
+          value={this.state.myTextInput}
+          onChangeText={this.onChangeInput}
+          multiline={true}
+          maxLength={100}
+          autoCapitalize={'none'}
+          editable={true}
+        />
+        <Button title="Add Text Input" onPress={this.onAddTextInput} />
+
+        <ScrollView style={{width: '100%'}}>
+          {this.state.alphabet.map((item, idx) => (
+            <Text style={styles.mainText} key={idx}>
+              {item}
+            </Text>
+          ))}
+        </ScrollView>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  mainView: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingTop: 50,
+    alignItems: 'center',
+    // justifyContent: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  subView: {
+    backgroundColor: 'yellow',
+    marginBottom: 10,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  anotherSubView: {
+    flex: 2,
+    backgroundColor: 'yellow',
+    marginBottom: 10,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  mainText: {
+    fontSize: 20,
+    fontWeight: 'normal',
+    color: 'red',
+    padding: 20,
+    margin: 20,
+    backgroundColor: 'pink',
+  },
+  input: {
+    width: '100%',
+    backgroundColor: '#cecece',
+    marginTop: 20,
+    fontSize: 25,
+    padding: 10,
   },
 });
 
