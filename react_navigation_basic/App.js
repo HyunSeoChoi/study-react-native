@@ -11,9 +11,17 @@ class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="User">
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="User" component={UserScreen} />
+          <Stack.Screen
+            name="User"
+            component={UserScreen}
+            initialParams={{
+              userIdx: 100,
+              userName: 'Gildong',
+              userLastName: 'Go',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
