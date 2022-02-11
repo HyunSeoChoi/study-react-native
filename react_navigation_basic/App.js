@@ -6,6 +6,7 @@ import HomeScreen from './src/home';
 import UserScreen from './src/user';
 import LogoTitle from './src/logo';
 import TouchHistoryMath from 'react-native/Libraries/Interaction/TouchHistoryMath';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 const Stack = createNativeStackNavigator();
 

@@ -114,7 +114,6 @@
 				28DC954242899937340773D4 /* Pods-react_native_basic-react_native_basicTests.debug.xcconfig */,
 				C57778640FA70F944EFC7C9D /* Pods-react_native_basic-react_native_basicTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
