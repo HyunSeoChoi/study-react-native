@@ -10,6 +10,15 @@ import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 const Stack = createNativeStackNavigator();
 
+/* Stack Navigator
+  - Drawer Navigator w/ Drawer Screen C, D,...
+  - Tab Navigator
+    - Tab Screen F
+    - Tab Screen G
+  - Stack Screen A
+  - Stack Screen B
+*/
+
 class App extends Component {
   logoTitle = () => {
     return (
