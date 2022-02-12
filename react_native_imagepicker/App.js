@@ -23,6 +23,10 @@ import ImagePicker, {
 import Contacts from 'react-native-contacts';
 
 class App extends Component {
+  state = {
+    myContacts: [],
+  };
+
   async requestContactPermission() {
     if (Platform.OS === 'ios') {
       console.warn('ios');
@@ -48,11 +52,46 @@ class App extends Component {
   getContacts = () => {
     this.requestContactPermission().then(didGetPermission => {
       if (didGetPermission) {
-        Contacts.getAll()
+        Contacts.getAadll()
           .then(contacts => {
-            console.warn(contacts);
+            this.setState({
+              myContacts: contacts,
+            });
           })
           .catch(e => {});
+      } else {
+        alert('no permission');
+      }
+    });
+  };
+
+  addContacts = () => {
+    this.requestContactPermission().then(didGetPermission => {
+      if (didGetPermission) {
+        const newContact = {
+          emailAddress: [
+            {
+              label: 'work',
+              email: 'aaaa@example.com',
+            },
+          ],
+          familyName: 'Go',
+          givenName: 'Gildong',
+          phoneNumbers: [
+            {
+              label: 'mobile',
+              number: '(010) 1111-1111',
+            },
+          ],
+        };
+
+        Contacts.addContact(newContact)
+          .then(() => {
+            this.getContacts();
+          })
+          .catch(err => {
+            throw err;
+          });
       } else {
         alert('no permission');
       }
@@ -62,7 +101,14 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.myContacts.map((item, idx) => (
+          <Text>
+            {item.givenName} {item.familyName}
+          </Text>
+        ))}
+
         <Button title="Load Contacts" onPress={() => this.getContacts()} />
+        <Button title="Add Contacts" onPress={() => this.addContacts()} />
       </View>
     );
   }
