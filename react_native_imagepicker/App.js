@@ -52,7 +52,7 @@ class App extends Component {
   getContacts = () => {
     this.requestContactPermission().then(didGetPermission => {
       if (didGetPermission) {
-        Contacts.getAadll()
+        Contacts.getAll()
           .then(contacts => {
             this.setState({
               myContacts: contacts,
@@ -98,6 +98,12 @@ class App extends Component {
     });
   };
 
+  openForm = () => {
+    Contacts.openContactForm({}).catch(err => {
+      if (err) console.warn(err);
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -109,6 +115,7 @@ class App extends Component {
 
         <Button title="Load Contacts" onPress={() => this.getContacts()} />
         <Button title="Add Contacts" onPress={() => this.addContacts()} />
+        <Button title="Open Form" onPress={() => this.openForm()} />
       </View>
     );
   }
