@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "react_native_imagepicker.app"
-               BlueprintName = "react_native_imagepicker"
-               ReferencedContainer = "container:react_native_imagepicker.xcodeproj">
+               BuildableName = "react.app"
+               BlueprintName = "react"
+               ReferencedContainer = "container:react.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "react_native_imagepickerTests.xctest"
-               BlueprintName = "react_native_imagepickerTests"
-               ReferencedContainer = "container:react_native_imagepicker.xcodeproj">
+               BuildableName = "reactTests.xctest"
+               BlueprintName = "reactTests"
+               ReferencedContainer = "container:react.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "react_native_imagepicker.app"
-            BlueprintName = "react_native_imagepicker"
-            ReferencedContainer = "container:react_native_imagepicker.xcodeproj">
+            BuildableName = "react.app"
+            BlueprintName = "react"
+            ReferencedContainer = "container:react.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "react_native_imagepicker.app"
-            BlueprintName = "react_native_imagepicker"
-            ReferencedContainer = "container:react_native_imagepicker.xcodeproj">
+            BuildableName = "react.app"
+            BlueprintName = "react"
+            ReferencedContainer = "container:react.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
