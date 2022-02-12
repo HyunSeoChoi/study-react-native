@@ -5,16 +5,15 @@ class AnimOne extends Component {
   constructor() {
     super();
     this.state = {
-      mySquare: new Animated.ValueXY(0, 0),
+      mySquare: new Animated.Value(1),
     };
   }
 
   runAnimation = () => {
     Animated.timing(this.state.mySquare, {
-      toValue: {x: 50, y: 300},
+      toValue: 0,
       duration: 2000,
       delay: 1500,
-      easing: Easing.elastic(3),
     }).start();
   };
 
@@ -22,8 +21,8 @@ class AnimOne extends Component {
     return (
       <View>
         <Animated.View
-          style={this.state.mySquare.getLayout()} //style={{left: this.mySquare.x, top: this.mySquare.y}}
-        >
+          //style={this.state.mySquare.getLayout()}
+          style={{opacity: this.state.mySquare}}>
           <View style={styles.square}></View>
         </Animated.View>
         <Button title="Animation Start" onPress={this.runAnimation} />
