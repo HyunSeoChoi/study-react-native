@@ -22,9 +22,38 @@ class AnimOne extends Component {
       <View>
         <Animated.View
           //style={this.state.mySquare.getLayout()}
-          style={{opacity: this.state.mySquare}}>
+          style={{
+            opacity: this.state.mySquare,
+            transform: [
+              {
+                rotateX: this.state.mySquare.interpolate({
+                  inputRange: [0, 0.5, 1],
+                  outputRange: ['0deg', '180deg', '360deg'],
+                }),
+              },
+              {
+                translateX: this.state.mySquare.interpolate({
+                  inputRange: [0, 0.5, 1],
+                  outputRange: [300, 150, 0],
+                }),
+              },
+            ],
+          }}>
           <View style={styles.square}></View>
         </Animated.View>
+        <Animated.Text
+          style={{
+            fontSize: this.state.mySquare.interpolate({
+              inputRange: [0, 0.5, 1],
+              outputRange: [40, 30, 20],
+            }),
+            color: this.state.mySquare.interpolate({
+              inputRange: [0, 0.5, 1],
+              outputRange: ['red', 'green', 'blue'],
+            }),
+          }}>
+          <Text>Animation Effects</Text>
+        </Animated.Text>
         <Button title="Animation Start" onPress={this.runAnimation} />
       </View>
     );
