@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, View, Text} from 'react-native';
+import {Dimensions, Platform, StyleSheet, View, Text} from 'react-native';
 import SuperText from './src/utils/superText';
 
 class App extends Component {
-  checkSupport() {
+  functionA = () => {
+    if (Dimensions.get('window').fontScale === 1) {
+      console.warn('good');
+    } else {
+      console.warn('Error! The font scale must be 1');
+    }
+  };
+
+  checkSupport = () => {
     if (Platform.OS === 'ios') {
       if (Platform.Version < 13.4) {
         return false;
@@ -14,22 +22,11 @@ class App extends Component {
       }
     }
     return true;
-  }
+  };
   render() {
-    return (
-      <View style={styles.container}>
-        {this.checkSupport() ? (
-          <SuperText style={styles.div}>
-            {/* This is my template! */}
-            {Platform.OS === 'ios'
-              ? 'This is iOS Phone'
-              : 'This is my Android Phone'}
-          </SuperText>
-        ) : (
-          <Text>Sorry, Your phone is not being supported by the app.</Text>
-        )}
-      </View>
-    );
+    console.warn(Dimensions.get('screen'));
+    console.warn(Dimensions.get('window'));
+    return <View style={styles.container}>{this.functionA()}</View>;
   }
 }
 
